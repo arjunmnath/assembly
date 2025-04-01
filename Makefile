@@ -17,4 +17,7 @@ as-gcc:
 	gcc a.out -0 $(out) -nostdlib -static;
 	rm a.out;
 
-
+as-ld:
+	as -o a.o $(source)
+	ld -o $(out) a.o -lSystem -syslibroot $(xcrun --show-sdk-path) -e _start
+	rm a.o
